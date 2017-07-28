@@ -50,25 +50,25 @@ $("#nav .ipt-search").on("blur",function(){
 var time;
 var idx;
 run();
-$("#banner .tab li").on("click",function(){
+$("#banner .tab li").on("click",function(){//点小圆点切换
 	clearInterval(time);
 	idx=$(this).index();
 	go(idx,0);
 	run();
 });
-$("#banner .slideshow .btn.left").on("click",function(){
+$("#banner .slideshow .btn.left").on("click",function(){//点左箭头
 	clearInterval(time);
 	idx = $("#banner .slideshow .img-box li.selected").index();
 	go(idx,5);
 	run();	
 });
-$("#banner .slideshow .btn.right").on("click",function(){
+$("#banner .slideshow .btn.right").on("click",function(){//点右箭头
 	clearInterval(time);
 	idx = $("#banner .slideshow .img-box li.selected").index();
 	go(idx);
 	run();	
 });
-$("#banner .slideshow .img-box li").hover(
+$("#banner .slideshow .img-box li").hover(//鼠标悬停暂停轮播
 	function(){
 		clearInterval(time);
 	},

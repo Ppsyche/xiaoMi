@@ -294,6 +294,7 @@ $orange:#ff6600;
 }
 /*banner*/
 #banner{
+	position: relative;
 	.slideshow{
 		position: relative;
 		.img-box{
@@ -365,4 +366,124 @@ $orange:#ff6600;
 			}
 		}
 	}
+	.side-bar{
+		width: 243px;
+		height: 420px;
+		padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    .one-nav{
+    	// width: 100%;
+    	height: 42px;
+    	line-height: 42px;
+    	padding: 0 29px;
+    	.title{
+    		color: #fff;
+    		font-size: 14px;
+    		i{
+	    		float: right;
+	    	}
+    	} 
+    	.nav-menu{
+    		height: 460px;
+    		position: absolute;
+    		top: 0;
+    		left: 243px;
+    		z-index: 30;
+    		background-color: #fff;
+    		border: 1px solid #e0e0e0;
+    		border-left: 0;
+    		box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+    		padding-left: 20px;
+    		display: none;
+    		&.ul1{
+    			width: 240px;
+    		}
+    		&.ul2{
+    			width: 481px;
+    		}
+    		&.ul3{
+    			width: 721px;
+    		}
+    		&.ul4{
+    			width: 962px;
+    		}
+    		ul{
+    			width: 236px;
+    			float: left;
+			    padding: 2px 0;
+			    li{
+			    	width: 236px;
+			    	height: 76px;
+			    	font-size: 14px;
+			    	position: relative;
+			    	a.name{
+			    		width: 170px;
+							display: block;
+							padding: 18px 0;
+							line-height: 40px;
+							color: #333;
+							@include transition(.2s);
+							img{
+								margin-right: 12px;
+								vertical-align: middle;
+							}
+							&:hover{
+								color: $orange;
+							}
+							&.long{
+								width: 256px;
+							}
+			    	}
+			    	a.buy{
+			    		position: absolute;
+			    		right: 30px;
+			    		top: 26px;
+	    		    display: inline-block;
+			    		width: 58px;
+			    		height: 22px;
+			    		line-height: 22px;
+			    		border: 1px solid $orange;
+			    		color: $orange;
+			    		font-style: 12px;
+			    		text-align: center;
+			    		&:hover{
+			    			background-color: $orange;
+			    			color: #fff;
+			    		}
+			    	}
+			    }
+    		}
+    	}
+    	&:hover{
+    		background-color: $orange;
+				.nav-menu{
+					display: block;
+				}
+    	}
+    }
+	}
+	.small-bner{
+		height: 170px;
+		margin-top: 14px;
+		.icon-box{
+			width: 242px;
+			height: 170px;
+	    background: #5f5750;
+	    float: left;
+		}
+		.img-box{
+			float: left;
+			width: 314px;
+			margin-left: 14px;
+			img{
+				width: 314px;
+    		height: 170px;
+			}
+		}
+	}
+
 }
