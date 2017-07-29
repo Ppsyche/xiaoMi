@@ -47,42 +47,42 @@ $("#nav .ipt-search").on("blur",function(){
 	$("#nav .search input").removeClass("ipt-focus");
 });
 //轮播图
-var time;
+var bannerTime;
 var idx;
-run();
+bannerRun();
 $("#banner .tab li").on("click",function(){//点小圆点切换
-	clearInterval(time);
+	clearInterval(bannerTime);
 	idx=$(this).index();
-	go(idx,0);
-	run();
+	bannerGo(idx,0);
+	bannerRun();
 });
 $("#banner .slideshow .btn.left").on("click",function(){//点左箭头
-	clearInterval(time);
+	clearInterval(bannerTime);
 	idx = $("#banner .slideshow .img-box li.selected").index();
-	go(idx,5);
-	run();	
+	bannerGo(idx,5);
+	bannerRun();	
 });
 $("#banner .slideshow .btn.right").on("click",function(){//点右箭头
-	clearInterval(time);
+	clearInterval(bannerTime);
 	idx = $("#banner .slideshow .img-box li.selected").index();
-	go(idx);
-	run();	
+	bannerGo(idx);
+	bannerRun();	
 });
 $("#banner .slideshow .img-box li").hover(//鼠标悬停暂停轮播
 	function(){
-		clearInterval(time);
+		clearInterval(bannerTime);
 	},
 	function(){
-		run();
+		bannerRun();
 	}
 );
-function run(){
-	time = setInterval(function(){
+function bannerRun(){
+	bannerTime = setInterval(function(){
 		idx = $("#banner .slideshow .img-box li.selected").index();
-		go(idx);
+		bannerGo(idx);
 	},4000);
 }
-function go(id=0,n=1){
+function bannerGo(id=0,n=1){
 	id = (id+n)%6;
 	$("#banner .slideshow .img-box li").eq(id).stop(true).fadeIn(200).siblings().fadeOut(200);
 	$("#banner .slideshow .img-box li").eq(id).addClass("selected")
@@ -90,4 +90,43 @@ function go(id=0,n=1){
 	$("#banner .tab li").eq(id).addClass("selected")
 		.siblings().removeClass("selected");	
 }
+//小米明星单品轮播
+startRun();
+$("#start-product .arrows .left").on("click",function(){//点向左箭头
+	clearInterval(startTime);
+	if($(this).is(".usable")){
+		startGo("0","left","right");
+	}
+	startRun();	
+});
+$("#start-product .arrows .right").on("click",function(){//点向右箭头
+	clearInterval(startTime);
+	if($(this).is(".usable")){
+		startGo("-1226px","right","left");
+	}	
+	startRun();
+});
+$("#start-product .product ul").hover(//鼠标悬停暂停轮播
+	function(){
+		clearInterval(startTime);
+	},
+	function(){
+		startRun();
+	}
+);
+function startRun(){//自动轮播
+	startTime = setInterval(function(){
+		if($("#start-product .arrows .left").is(".usable")){
+			startGo("0","left","right");
+		}else if($("#start-product .arrows .right").is(".usable")){
+			startGo("-1226px","right","left");
+		}
+	},4000);
+}
+function startGo(n,direction1,direction2){
+	$("#start-product .product ul").css('left',n);
+	$("#start-product .arrows ."+direction1).addClass("unusable").removeClass("usable");
+	$("#start-product .arrows ."+direction2).addClass("usable").removeClass("unusable");
+}
+
 

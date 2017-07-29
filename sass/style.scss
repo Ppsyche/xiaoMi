@@ -32,6 +32,12 @@ $orange:#ff6600;
   -ms-transition: $transition;
   -o-transition: $transition;
   transition: $transition;
+}@mixin box-shadow($box-shadow...) {
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  -ms-box-shadow: $box-shadow;
+  -o-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
 }
 
 /*#header*/
@@ -90,7 +96,7 @@ $orange:#ff6600;
 				position: absolute;
 				top: 40px;
 				right: 0;
-				box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+				@include box-shadow(0 2px 10px rgba(0,0,0,0.15));
 				z-index: 31;
 				width: 250px;
 				padding: 15px 0 0;
@@ -163,7 +169,7 @@ $orange:#ff6600;
 		width: 100%;
 		font-size: 12px;
 		border-top: 1px solid #ccc;
-		box-shadow: 0 2px rgba(0,0,0,0.15);
+		@include box-shadow(0 2px rgba(0,0,0,0.15));
 		display: none;
 		background:#fff;
 		z-index:31;
@@ -295,6 +301,7 @@ $orange:#ff6600;
 /*banner*/
 #banner{
 	position: relative;
+	margin-bottom: 26px;
 	.slideshow{
 		position: relative;
 		.img-box{
@@ -396,7 +403,7 @@ $orange:#ff6600;
     		background-color: #fff;
     		border: 1px solid #e0e0e0;
     		border-left: 0;
-    		box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+    		@include box-shadow(0 8px 16px rgba(0,0,0,0.18));
     		padding-left: 20px;
     		display: none;
     		&.ul1{
@@ -474,16 +481,191 @@ $orange:#ff6600;
 			height: 170px;
 	    background: #5f5750;
 	    float: left;
+	    ul li{
+	    	width: 78px;
+   			height: 85px;
+		    float: left;
+		    position: relative;
+	    	a{
+	    		text-align: center;
+	    		width: 78px;
+	    		height: 85px;
+	    		color: rgba(255, 255, 255, 0.7);
+	    		font-size: 12px;
+	    		@include transition(.2s);
+	    		i{
+	    			display: block;
+   		  		padding: 18px 0 10px 0;
+   		  		font-size: 25px;
+	    		}
+	    		span{
+	    			display: block;
+	    		}
+	    		&:hover{
+						color: #fff;
+	    		}
+	    	}
+	    	&.li1::before,
+	    	&.li2::before,
+	    	&.li4::before,
+	    	&.li5::before{
+	    		content: '';
+	    		width: 0;
+	    		height: 64px;
+	    		border-right: 1px solid #665e57;
+	    		display: block;
+	    		position: absolute;
+	    		top: 8px;
+	    		right: 0;
+	    	}
+	    	&.li1::after,
+	    	&.li2::after,
+	    	&.li3::after{
+					content: '';
+			    width: 64px;
+			    height: 0;
+			    border-bottom: 1px solid #665e57;
+			    display: block;
+			    position: absolute;
+			    left: 8px;
+			    bottom: 0;
+	    	}
+	    }
 		}
 		.img-box{
 			float: left;
 			width: 314px;
 			margin-left: 14px;
-			img{
+			@include transition(box-shadow .2s linear);
+			&:hover{
+				@include box-shadow(0 15px 30px rgba(0,0,0,0.1));
+			}
+			a{
 				width: 314px;
     		height: 170px;
+    		display: block;
+				img{
+					width: 314px;
+	    		height: 170px;
+				}
+			}	
+		}
+	}
+}
+/*start-product*/
+#start-product{
+	margin-bottom: 40px;
+	.title{
+		height: 58px;
+		h2{
+			font-size: 22px;
+			font-weight: 200;
+			color: #333;
+			float: left;
+			line-height: 58px;
+		}
+		.arrows{
+			float: right;
+			height: 24px;
+			margin: 17px;
+			a{
+				display: inline-block;
+		    width: 34px;
+		    height: 22px;
+		    border: 1px solid #e0e0e0;
+		    background-color: #fff;
+		    text-align: center;
+		    @include transition(.5s);
+		    &.left{
+		    	border-right: none;
+		    }
+		    &.usable{
+					color: #b0b0b0;
+					&:hover{
+						color: $orange;
+					}
+		    }
+		    &.unusable{
+		    	color: #e0e0e0;
+		    	cursor: default;
+		    }
 			}
 		}
 	}
+	.product{
+		width: 1226px;
+		height: 340px;
+		overflow: hidden;
+		position: relative;
+		ul{
+			width: 2452px;
+			height: 340px;
+			position: absolute;
+			left: 0;
+			@include transition(left .5s);
+			li{
+				height: 339px;
+		    width: 234px;
+		    float: left;
+		    margin-right: 14px;
+		    background-color: #fafafa;
+		    text-align: center;
+		    &.li1{
+		    	border-top: 1px solid #ffac13;
+		    }
+		    &.li2{
+		    	border-top: 1px solid #83c44e;
+		    }
+		    &.li3{
+		    	border-top: 1px solid #2196f3;
+		    }
+		    &.li4{
+		    	border-top: 1px solid #e53935;
+		    }
+		    &.li5{
+		    	border-top: 1px solid #00c0a5;
+		    	margin-right: 0;
+		    }
+		    .p-img{
+		    	display: block;
+		    	margin: 39px auto 22px;
+		    	img{
+		    		width: 160px;
+		    		height: 160px;
+		    	}
+		    }
+		    .p-title{
+		    	display: block;
+		    	margin: 0 auto 3px;
+				  font-size: 14px;
+				  font-weight: 400;
+				  text-overflow: ellipsis;
+				  white-space: nowrap;
+				  overflow: hidden;
+				  color: #212121;
+		    }
+		    .introduce{
+		    	height: 18px;
+		    	margin: 0 20px 12px;
+		    	font-size: 12px;
+		    	text-overflow: ellipsis;
+		    	white-space: nowrap;
+		    	overflow: hidden;
+		    	color: #b0b0b0;
+		    }
+		    .p-price{
+		    	color: $orange;
+		    	font-size: 14px;
+		    }
+			}
+		} 
 
+		
+	}
+}
+/*灰色背景*/
+#main{
+	width: 100%;
+	background-color: #f5f5f5;
+	padding-top: 60px;
 }
